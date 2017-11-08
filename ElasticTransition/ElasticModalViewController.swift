@@ -13,7 +13,7 @@ open class ElasticModalViewController: UIViewController, ElasticMenuTransitionDe
   public var dragDownTransformType:ElasticTransitionBackgroundTransform = .subtle
   public var dragRightTransformType:ElasticTransitionBackgroundTransform = .translatePull
   
-  lazy var modalTransition:ElasticTransition = {
+  open lazy var modalTransition:ElasticTransition = {
     let transition = ElasticTransition()
     transition.edge = .bottom
     transition.sticky = true
@@ -77,7 +77,7 @@ open class ElasticModalViewController: UIViewController, ElasticMenuTransitionDe
     dismiss(animated: true, completion: nil)
   }
   
-  public func handleLeftPan(_ pan:UIPanGestureRecognizer){
+  @objc public func handleLeftPan(_ pan:UIPanGestureRecognizer){
     if pan.state == .began{
       modalTransition.transformType = dragRightTransformType
       modalTransition.edge = .right
